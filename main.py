@@ -58,6 +58,7 @@ parser = reqparse.RequestParser()
 parser.add_argument("name", type=str)
 parser.add_argument("videos", type=int)
 
+
 class Main(Resource):
     def get(self, course_id):
         if course_id == 0:
@@ -73,10 +74,9 @@ class Main(Resource):
         courses[course_id] = parser.parse_args()
         return courses
 
-    def put (self, course_id):
+    def put(self, course_id):
         courses[course_id] = parser.parse_args()
         return courses
-
 
 
 api.add_resource(Main, "/api/courses/<int:course_id>")
